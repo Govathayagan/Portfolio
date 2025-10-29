@@ -974,8 +974,8 @@ nav.scrolled {
   }
 
   .hero-left img {
-    width: 220px;
-    height: 220px;
+    width: 250px;
+    height: 250px;
     border-width: 2px;
     box-shadow: 0 0 20px rgba(0, 178, 255, 0.3);
   }
@@ -1007,20 +1007,23 @@ nav.scrolled {
 /* 📱 Extra Small Devices (≤575px) */
 @media (max-width: 575px) {
   .hero {
-    padding: 90px 15px 40px;
+    padding: 100px 14px 100px;
   }
 
   .hero-left img {
-    width: 230px;
-    height: 230px;
+    width: 240px;
+    height: 240px;
   }
+  .hero-right .text-set.active h1.glitch-text {
+    font-size: 1.3rem; 
+}
 
   .hero-right h1 {
-    font-size: 1.4rem;
+    font-size: 1.6rem;
   }
 
   .subtitle {
-    font-size: 0.95rem;
+    font-size: 1.3rem;
   }
 
   .cta-button {
