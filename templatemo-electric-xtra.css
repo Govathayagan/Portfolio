@@ -1007,7 +1007,7 @@ nav.scrolled {
 /* 📱 Extra Small Devices (≤575px) */
 @media (max-width: 575px) {
   .hero {
-    padding: 100px 14px 100px;
+    padding: 150px 14px 100px;
   }
 
   .hero-left img {
@@ -1019,11 +1019,11 @@ nav.scrolled {
 }
 
   .hero-right h1 {
-    font-size: 1.6rem;
+    font-size: 1.7rem;
   }
 
   .subtitle {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
   }
 
   .cta-button {
@@ -1985,7 +1985,7 @@ nav.scrolled {
 /* ✅ Extra Small Screens (≤480px) */
 @media (max-width: 480px) {
   .pricing {
-    padding: 40px 1.5rem;
+    padding: 40px 1.2rem;
   }
   .pricing-grid {
     display: inline-flex;
