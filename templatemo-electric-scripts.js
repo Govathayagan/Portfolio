@@ -265,3 +265,37 @@ document.querySelectorAll('.btn-primary, .btn-secondary').forEach(button => {
         this.style.boxShadow = '';
     });
 });
+const statItems = document.querySelectorAll('.stat-item');
+const options = { threshold: 0.5 };
+
+function countUp(element) {
+  const target = +element.getAttribute('data-target');
+  const duration = 3000; // slow animation (3 seconds)
+  let current = 0;
+  const increment = target / (duration / 40);
+
+  const update = setInterval(() => {
+    current += increment;
+    if (current >= target) {
+      const value = target.toString().padStart(2, '0');
+      element.textContent = element.classList.contains('plus') ? `+${value}` : value;
+      clearInterval(update);
+    } else {
+      const value = Math.floor(current).toString().padStart(2, '0');
+      element.textContent = element.classList.contains('plus') ? `+${value}` : value;
+    }
+  }, 40);
+}
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('show');
+      const number = entry.target.querySelector('.count');
+      countUp(number);
+      observer.unobserve(entry.target);
+    }
+  });
+}, options);
+
+statItems.forEach(item => observer.observe(item));
