@@ -2636,3 +2636,44 @@ nav.scrolled {
 
 
 
+/* ====== Video Section Styling ====== */
+.video-section {
+  text-align: center;
+  margin-top: 50px;
+  padding: 0 16px;
+}
+
+
+.short-video {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Responsive iframe with aspect ratio */
+.short-video iframe {
+  width: 100%;
+  max-width: 560px;          /* desktop max */
+  aspect-ratio: 16 / 9;      /* keeps height correct */
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.6);
+  transition: transform 0.3s ease;
+}
+
+.short-video iframe:hover {
+  transform: scale(1.02);
+}
+
+/* Breakpoints adjust max width only; height is handled by aspect-ratio */
+@media (max-width: 992px) {
+  .short-video iframe { max-width: 480px; }
+}
+
+@media (max-width: 768px) {
+  .short-video iframe { max-width: 420px; }
+}
+
+@media (max-width: 576px) {
+  .short-video iframe { max-width: 90vw; }
+}

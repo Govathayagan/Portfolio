@@ -299,3 +299,46 @@ const observer = new IntersectionObserver((entries) => {
 }, options);
 
 statItems.forEach(item => observer.observe(item));
+
+
+
+
+
+// Autoplay the YouTube video when ≥50% visible; pause (stop) when out of view.
+document.addEventListener("DOMContentLoaded", () => {
+  const iframe = document.getElementById("roboticVideo");
+  if (!iframe) return;
+
+  // Use URL API to manage query params safely
+  const url = new URL(iframe.src);
+  const baseSrc = url.toString();
+  let isPlaying = false;
+
+  const startAutoplay = () => {
+    const playUrl = new URL(baseSrc);
+    playUrl.searchParams.set("autoplay", "1");
+    // mute must be set for autoplay to work across browsers (already in baseSrc)
+    iframe.src = playUrl.toString();
+    isPlaying = true;
+  };
+
+  const stopPlayback = () => {
+    iframe.src = baseSrc; // reloads iframe to stop
+    isPlaying = false;
+  };
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && !isPlaying) {
+          startAutoplay();
+        } else if (!entry.isIntersecting && isPlaying) {
+          stopPlayback();
+        }
+      });
+    },
+    { threshold: 0.5 }
+  );
+
+  observer.observe(iframe);
+});
